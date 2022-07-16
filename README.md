@@ -82,3 +82,6 @@ Open the CodeSandbox template and save to create your own unique fork.
 ## How to submit your game
 
 Send the URL for your saved fork to your Indeed recruiter.
+
+<!-- can i use prettier, jest, cypress, eslint? -->
+<!-- are questions and answers text only? -->
