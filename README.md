@@ -85,3 +85,10 @@ Send the URL for your saved fork to your Indeed recruiter.
 
 <!-- can i use prettier, jest, cypress, eslint? -->
 <!-- are questions and answers text only? -->
+<!-- how should page nav work, pressing back goes to separage page? -->
+<!-- file structure of components and css? -->
+<!-- enums as jsx files? -->
+<!-- unified text component? -->
+<!-- how to add validation? -->
+<!-- todo lock buttons, inccorrect message -->
+<!-- todo add questions -->

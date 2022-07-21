@@ -5,6 +5,11 @@ const QUESTION_LIST = [
     ANSWER_INDEX: [0]
   },
   {
+    QUESTION_TEXT: 'is the sky red',
+    QUESTION_OPTIONS: ['aaaa', 'bbb', 'ccc', 'ddd'],
+    ANSWER_INDEX: [3]
+  },
+  {
     QUESTION_TEXT: 'Which is cat',
     QUESTION_OPTIONS: ['dog', 'lion', 'puma'],
     ANSWER_INDEX: [1, 2]
