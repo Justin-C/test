@@ -92,3 +92,6 @@ Send the URL for your saved fork to your Indeed recruiter.
 <!-- how to add validation? -->
 <!-- todo lock buttons, inccorrect message -->
 <!-- todo add questions -->
+<!-- todo rename variables -->
+<!-- accessibilty? aria labels only on photo and tab order/enter? -->
+<!-- radio or button -->

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Text from './text';
 import Answer from './answer';
@@ -18,6 +18,7 @@ const QuestionPage = () => {
   const [questionNum, setQuestionNum] = useState(0);
   const [complete, setComplete] = useState(false);
   const [correct, setCorrect] = useState(false);
+  const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
   const navigate = useNavigate();
 
   const increaseScore = () => {
@@ -26,39 +27,42 @@ const QuestionPage = () => {
 
   const increaseQuestion = () => {
     if (questionNum < QUESTION_LIST.length - 1) {
-      setComplete(false)
+      setComplete(false);
       setCorrect(false);
       setQuestionNum(questionNum + 1);
+      setSelectedAnswers([]);
     } else {
       navigate('/final');
     }
   };
 
-  let selectedAnswers: string[] = [];
-  const handleSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
-    selectedAnswers.push(e.target.value);
+  useEffect(() => {
     if (selectedAnswers.length === QUESTION_LIST[questionNum].ANSWER_INDEX.length) {
       setComplete(true);
       let wrongFlag = false;
       for (const x of QUESTION_LIST[questionNum].ANSWER_INDEX) {
         if (selectedAnswers.indexOf(QUESTION_LIST[questionNum].QUESTION_OPTIONS[x]) === -1) {
-          console.log('wrong');
           wrongFlag = true;
         }
-
       }
-      if(!wrongFlag){
+      if (!wrongFlag) {
         setCorrect(true);
-        increaseScore()
+        increaseScore();
       }
     }
+  }, [selectedAnswers]);
+
+  const handleSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectedAnswers((prev) => [...prev, e.target.value]);
   };
 
   const renderAnswers = QUESTION_LIST[questionNum].QUESTION_OPTIONS.map((str) => (
-    <Answer handleClick={handleSelect} answerText={str} key={str} />
+    <Answer handleClick={handleSelect} answerText={str} key={str} isEnabled={complete} />
   ));
 
-  const renderComplete = complete && (correct ? <Text textString={CORRECT_ANSWER_MESSAGE} /> : <Text textString='wrong anwe' />)
+  const renderComplete =
+    complete &&
+    (correct ? <Text textString={CORRECT_ANSWER_MESSAGE} /> : <Text textString="wrong anwswer" />);
 
   return (
     <div>
@@ -67,20 +71,17 @@ const QuestionPage = () => {
         styleName="question-count"
         textString={QUESTION_COUNT(questionNum + 1, QUESTION_LIST.length)}
       />
-      <Text
-        styleName="score-count"
-        textString={score.toString()}
-      />
+      <Text styleName="score-count" textString={score.toString()} />
       <Text styleName="question-text" textString={QUESTION_LIST[questionNum]?.QUESTION_TEXT} />
       {renderAnswers}
       {renderComplete}
+      <br />
       <Button
         buttonText={
           questionNum === QUESTION_LIST.length - 1 ? BUTTON_TEXT_FINAL_QUESTION : BUTTON_TEXT
         }
         handleClick={increaseQuestion}
       />
-      {questionNum}
     </div>
   );
 };

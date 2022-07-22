@@ -5,11 +5,17 @@ import '../styles/allstyles.scss';
 interface AnswerProps {
   answerText: string;
   handleClick: ChangeEventHandler;
+  isEnabled: boolean;
 }
 const Answer = (props: AnswerProps) => {
   return (
     <label>
-      <input type="radio" onChange={props.handleClick} value={props.answerText} />{' '}
+      <input
+        type="radio"
+        onChange={props.handleClick}
+        value={props.answerText}
+        disabled={props.isEnabled}
+      />
       <Text styleName="answer-text" textString={props.answerText} />
     </label>
   );

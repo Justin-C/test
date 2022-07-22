@@ -1,9 +1,12 @@
 /** @jsxImportSource @emotion/react */
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import FinalPage from './components/final-page';
 import QuestionPage from './components/question-page';
 export default function App() {
+  const [score, setScore] = useState(0);
+  const [highScore, setHighScore] = useState(0);
+  const [highScoreDate, setHighScoreDate] = useState('');
   return (
     <div>
       <Router>
