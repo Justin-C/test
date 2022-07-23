@@ -16,7 +16,7 @@ const Answer = (props: AnswerProps) => {
         value={props.answerText}
         disabled={props.isEnabled}
       />
-      <Text styleName="answer-text" textString={props.answerText} />
+      <Text styleName="question__answer-text" textString={props.answerText} />
     </label>
   );
 };

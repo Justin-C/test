@@ -40,13 +40,13 @@ const FinalPage = () => {
   }, [score, highScore]);
 
   return (
-    <div className="final-page-wrapper">
-      <img src={finalImg} className="final-image" alt="brain on top of book" />
-      <Text textString={getFinalHeaderString(score, questionCount)} styleName="final-header" />
-      <Text textString={FINAL_SCORE(score, questionCount)} styleName="final-score" />
+    <div className="final__page-wrapper">
+      <img src={finalImg} className="final__image" alt="brain on top of book" />
+      <Text textString={getFinalHeaderString(score, questionCount)} styleName="final__header" />
+      <Text textString={FINAL_SCORE(score, questionCount)} styleName="final__score" />
       <Text
         textString={HIGH_SCORE(highScore, questionCount, highScoreDate)}
-        styleName="final-score"
+        styleName="final__score"
       />
       <Button buttonText={RESTART_BUTTON_TEXT} handleClick={handleReplayClick} isEnabled={true} />
     </div>

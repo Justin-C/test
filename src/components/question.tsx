@@ -53,8 +53,8 @@ const Question = (props: QuestionProps) => {
 
   return (
     <div>
-      <Text styleName="question-text" textString={props.questionObj.QUESTION_TEXT} />
-      <div className="answers">{renderAnswers}</div>
+      <Text styleName="question__question-text" textString={props.questionObj.QUESTION_TEXT} />
+      <div className="question__answer-container">{renderAnswers}</div>
     </div>
   );
 };

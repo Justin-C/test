@@ -47,18 +47,18 @@ const QuestionPage = () => {
   const renderFeedback =
     isAnswered &&
     (isCorrect ? (
-      <Text textString={CORRECT_ANSWER_MESSAGE} styleName="answer-correct" />
+      <Text textString={CORRECT_ANSWER_MESSAGE} styleName="question__feedback--correct" />
     ) : (
-      <Text textString={WRONG_ANSWER_MESSAGE} styleName="answer-incorrect" />
+      <Text textString={WRONG_ANSWER_MESSAGE} styleName="question__feedback--incorrect" />
     ));
 
   return (
-    <div className="question-page-wrapper">
+    <div className="question__page-wrapper">
       <Text
-        styleName="question-count"
+        styleName="question__counter"
         textString={QUESTION_COUNT(currentQuestionNum + 1, questionCount)}
       />
-      <Text styleName="score-count" textString={SCORE_COUNT(score.toString())} />
+      <Text styleName="question__score" textString={SCORE_COUNT(score.toString())} />
       <Question questionObj={QUESTION_LIST[currentQuestionNum]} />
       {renderFeedback}
       <br />

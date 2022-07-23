@@ -1,3 +1,4 @@
+// todo docs
 const QUESTION_LIST = [
   {
     QUESTION_TEXT: 'is the sky blue',
@@ -6,7 +7,7 @@ const QUESTION_LIST = [
   },
   {
     QUESTION_TEXT: 'is the sky red',
-    QUESTION_OPTIONS: ['aaaa', 'bbb', 'ccc', 'ddd'],
+    QUESTION_OPTIONS: ['aaaa', 'bbb', 'ccc', 'ddd', 'eee', 'fff'],
     ANSWER_INDEX: [3]
   },
   {

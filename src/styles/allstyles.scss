@@ -4,29 +4,28 @@ $colorIncorrect: #b02a2a;
 $colorRadioBorder: #c0c0c0;
 $colorRadioInner: #ffffff;
 
-.question-count {
+.question__counter {
   font-family: 'Roboto';
   font-weight: 700;
   font-size: 20px;
   color: $colorDefault;
 }
 
-.score-count {
+.question__score {
   font-family: 'Roboto';
   font-weight: 700;
   font-size: 20px;
   color: $colorDefault;
 }
 
-.question-text {
+.question__question-text {
   font-family: 'Roboto';
   font-weight: 400;
   font-size: 16px;
   color: $colorDefault;
 }
 
-// todo inherit?
-.answer-text {
+.question__answer-text {
   font-family: 'Roboto';
   font-weight: 400;
   font-size: 16px;
@@ -34,21 +33,21 @@ $colorRadioInner: #ffffff;
   color: $colorDefault;
 }
 
-.answer-correct {
+.question__feedback--correct {
   font-family: 'Roboto';
   font-weight: 700;
   font-size: 16px;
   color: $colorCorrect;
 }
 
-.answer-incorrect {
+.question__feedback--incorrect {
   font-family: 'Roboto';
   font-weight: 700;
   font-size: 16px;
   color: $colorIncorrect;
 }
 
-.answers {
+.question__answer-container {
   display: grid;
   justify-content: start;
   align-items: center;
@@ -57,30 +56,30 @@ $colorRadioInner: #ffffff;
   grid-template-rows: auto;
 }
 
-.question-page-wrapper {
+.question__page-wrapper {
   margin-left: 48px;
   margin-top: 56px;
 }
 
-.final-header {
+.final__header {
   font-family: 'Roboto';
   font-weight: 700;
   font-size: 36px;
   color: $colorDefault;
 }
 
-.final-score {
+.final__score {
   font-family: 'Roboto';
   font-weight: 400;
   font-size: 20px;
   color: $colorDefault;
 }
 
-.final-page-wrapper {
+.final__page-wrapper {
   text-align: center;
 }
 
-.final-image {
+.final__image {
   width: 30%;
   max-width: 10rem;
   min-width: 5rem;
@@ -88,10 +87,10 @@ $colorRadioInner: #ffffff;
 }
 
 @media (min-width: 600px) {
-  .answers {
+  .question__answer-container {
     grid-template-columns: repeat(2, 1fr);
   }
-  .score-count {
+  .question__score {
     position: absolute;
     margin: 0px;
     right: 48px;
