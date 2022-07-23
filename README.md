@@ -95,3 +95,7 @@ Send the URL for your saved fork to your Indeed recruiter.
 <!-- todo rename variables -->
 <!-- accessibilty? aria labels only on photo and tab order/enter? -->
 <!-- radio or button -->
+<!-- make component overridable? -->
+<!-- add comments -->
+<!-- todo deselect a radio -->
+<!-- confirm button/radio disable behavior -->

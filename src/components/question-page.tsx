@@ -7,47 +7,65 @@ import {
   BUTTON_TEXT,
   BUTTON_TEXT_FINAL_QUESTION,
   CORRECT_ANSWER_MESSAGE,
-  QUESTION_COUNT
+  QUESTION_COUNT,
+  SCORE_COUNT,
+  WRONG_ANSWER_MESSAGE
 } from '../enums/question-page-enums';
 import QUESTION_LIST from '../enums/questions-and-answers-enums';
 
 import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  incrementCurrentQuestionNum,
+  incrementScore,
+  setIsAnswered,
+  setIsCorrect
+} from '../redux/triviaSlice';
+import { RootState } from '../redux/store';
+import { FINAL_PATH } from '../enums/route-enums';
 
 const QuestionPage = () => {
-  const [score, setScore] = useState(0);
-  const [questionNum, setQuestionNum] = useState(0);
-  const [complete, setComplete] = useState(false);
-  const [correct, setCorrect] = useState(false);
+  // const [score, setScore] = useState(0);
+  const score = useSelector((state: RootState) => state.trivia.score);
+  const isCorrect = useSelector((state: RootState) => state.trivia.isCorrect);
+  const isAnswered = useSelector((state: RootState) => state.trivia.isAnswered);
+  const currentQuestionNum = useSelector((state: RootState) => state.trivia.currentQuestionNum);
   const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
+
+  const questionCount = QUESTION_LIST.length;
+  // const [questionNum, setQuestionNum] = useState(0);
+  // const [complete, setComplete] = useState(false);
+  // const [correct, setCorrect] = useState(false);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const increaseScore = () => {
-    setScore(score + 1);
-  };
-
   const increaseQuestion = () => {
-    if (questionNum < QUESTION_LIST.length - 1) {
-      setComplete(false);
-      setCorrect(false);
-      setQuestionNum(questionNum + 1);
+    if (currentQuestionNum < questionCount - 1) {
+      // setComplete(false);
+      // setCorrect(false);
+      // setQuestionNum(questionNum + 1);
+      dispatch(setIsCorrect(false));
+      dispatch(setIsAnswered(false));
+      dispatch(incrementCurrentQuestionNum());
       setSelectedAnswers([]);
     } else {
-      navigate('/final');
+      navigate(FINAL_PATH);
     }
   };
 
   useEffect(() => {
-    if (selectedAnswers.length === QUESTION_LIST[questionNum].ANSWER_INDEX.length) {
-      setComplete(true);
-      let wrongFlag = false;
-      for (const x of QUESTION_LIST[questionNum].ANSWER_INDEX) {
-        if (selectedAnswers.indexOf(QUESTION_LIST[questionNum].QUESTION_OPTIONS[x]) === -1) {
-          wrongFlag = true;
+    if (selectedAnswers.length === QUESTION_LIST[currentQuestionNum].ANSWER_INDEX.length) {
+      // setComplete(true);
+      dispatch(setIsAnswered(true));
+      let isWrong = false;
+      for (const x of QUESTION_LIST[currentQuestionNum].ANSWER_INDEX) {
+        if (selectedAnswers.indexOf(QUESTION_LIST[currentQuestionNum].QUESTION_OPTIONS[x]) === -1) {
+          isWrong = true;
         }
       }
-      if (!wrongFlag) {
-        setCorrect(true);
-        increaseScore();
+      if (!isWrong) {
+        dispatch(setIsCorrect(true));
+        dispatch(incrementScore());
       }
     }
   }, [selectedAnswers]);
@@ -56,30 +74,39 @@ const QuestionPage = () => {
     setSelectedAnswers((prev) => [...prev, e.target.value]);
   };
 
-  const renderAnswers = QUESTION_LIST[questionNum].QUESTION_OPTIONS.map((str) => (
-    <Answer handleClick={handleSelect} answerText={str} key={str} isEnabled={complete} />
+  const renderAnswers = QUESTION_LIST[currentQuestionNum].QUESTION_OPTIONS.map((str) => (
+    <Answer handleClick={handleSelect} answerText={str} key={str} isEnabled={isAnswered} />
   ));
 
-  const renderComplete =
-    complete &&
-    (correct ? <Text textString={CORRECT_ANSWER_MESSAGE} /> : <Text textString="wrong anwswer" />);
+  // todo rename
+  const renderAnswered =
+    isAnswered &&
+    (isCorrect ? (
+      <Text textString={CORRECT_ANSWER_MESSAGE} styleName="answer-correct" />
+    ) : (
+      <Text textString={WRONG_ANSWER_MESSAGE} styleName="answer-incorrect" />
+    ));
 
   return (
-    <div>
-      {/* move to a const??? */}
+    <div className="question-page-wrapper">
+      {/* TODO move to a const??? */}
       <Text
         styleName="question-count"
-        textString={QUESTION_COUNT(questionNum + 1, QUESTION_LIST.length)}
+        textString={QUESTION_COUNT(currentQuestionNum + 1, questionCount)}
       />
-      <Text styleName="score-count" textString={score.toString()} />
-      <Text styleName="question-text" textString={QUESTION_LIST[questionNum]?.QUESTION_TEXT} />
-      {renderAnswers}
-      {renderComplete}
+      <Text styleName="score-count" textString={SCORE_COUNT(score.toString())} />
+      <Text
+        styleName="question-text"
+        textString={QUESTION_LIST[currentQuestionNum]?.QUESTION_TEXT}
+      />
+      <div className="answers">{renderAnswers}</div>
+      {renderAnswered}
       <br />
       <Button
         buttonText={
-          questionNum === QUESTION_LIST.length - 1 ? BUTTON_TEXT_FINAL_QUESTION : BUTTON_TEXT
+          currentQuestionNum === questionCount - 1 ? BUTTON_TEXT_FINAL_QUESTION : BUTTON_TEXT
         }
+        isEnabled={isAnswered}
         handleClick={increaseQuestion}
       />
     </div>

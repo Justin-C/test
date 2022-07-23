@@ -1,7 +1,7 @@
 const QUESTION_LIST = [
   {
     QUESTION_TEXT: 'is the sky blue',
-    QUESTION_OPTIONS: ['yes', 'no'],
+    QUESTION_OPTIONS: ['yes', 'no', 'a', 'b'],
     ANSWER_INDEX: [0]
   },
   {

@@ -1,15 +1,15 @@
 import React, { MouseEventHandler } from 'react';
-
-const clickHandler = () => {
-  console.log('asdf');
-};
-
 interface ButtonProps {
   buttonText: string;
   handleClick: MouseEventHandler;
+  isEnabled: boolean;
 }
 const Button = (props: ButtonProps) => {
-  return <button onClick={props.handleClick}>{props.buttonText}</button>;
+  return (
+    <button onClick={props.handleClick} disabled={!props.isEnabled}>
+      {props.buttonText}
+    </button>
+  );
 };
 
 export default Button;

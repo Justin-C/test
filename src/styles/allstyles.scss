@@ -1,6 +1,7 @@
 // todo make colors into const
 $colorDefault: #2d2d2d;
 $colorCorrect: #065927;
+$colorIncorrect: #b02a2a;
 $colorRadioBorder: #c0c0c0;
 $colorRadioInner: #ffffff;
 
@@ -25,6 +26,7 @@ $colorRadioInner: #ffffff;
   color: $colorDefault;
 }
 
+// todo inherit?
 .answer-text {
   font-family: 'Roboto';
   font-weight: 400;
@@ -35,10 +37,70 @@ $colorRadioInner: #ffffff;
 
 .answer-correct {
   font-family: 'Roboto';
-  font-weight: 400;
+  font-weight: 700;
   font-size: 16px;
   color: $colorCorrect;
 }
+
+.answer-incorrect {
+  font-family: 'Roboto';
+  font-weight: 700;
+  font-size: 16px;
+  color: $colorIncorrect;
+}
+
+.answers {
+  display: grid;
+  justify-content: start;
+  align-items: center;
+  justify-items: start;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: auto;
+}
+
+.question-page-wrapper {
+  margin-left: 48px;
+  margin-top: 56px;
+}
+
+.final-header {
+    font-family: 'Roboto';
+    font-weight: 700;
+    font-size: 36px;
+    color: $colorDefault;
+}
+
+.final-score {
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 20px;
+    color: $colorDefault;
+}
+
+.final-page-wrapper {
+    text-align: center;
+}
+
+.final-image {
+    width: 30%;
+    max-width: 10rem;
+    min-width: 5rem;
+    height: auto
+}
+
+
+@media (min-width: 600px) {
+  .answers {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .score-count {
+    position: absolute;
+    margin: 0px;
+    right: 48px;
+    top: 48px;
+  }
+}
+
 
 // input[type="radio"] {
 //     background:red;
