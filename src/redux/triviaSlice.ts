@@ -9,6 +9,7 @@ export interface triviaState {
   currentQuestionNum: number;
   isCorrect: boolean;
   isAnswered: boolean;
+  selectedAnswers: string[];
 }
 const localStorageScore = window.localStorage.getItem('highScore') || '';
 const initialState: triviaState = {
@@ -17,7 +18,8 @@ const initialState: triviaState = {
   highScoreDate: window.localStorage.getItem('highScoreDate') || getFormattedDate(),
   currentQuestionNum: 0,
   isCorrect: false,
-  isAnswered: false
+  isAnswered: false,
+  selectedAnswers: []
 };
 
 export const triviaSlice = createSlice({
@@ -39,14 +41,23 @@ export const triviaSlice = createSlice({
     incrementCurrentQuestionNum: (state) => {
       state.currentQuestionNum += 1;
     },
-    resetCurrentQuestionNum: (state) => {
-      state.currentQuestionNum = 0;
-    },
     setIsCorrect: (state, action: PayloadAction<boolean>) => {
       state.isCorrect = action.payload;
     },
     setIsAnswered: (state, action: PayloadAction<boolean>) => {
       state.isAnswered = action.payload;
+    },
+    setSelectedAnswers: (state, action: PayloadAction<string>) => {
+      state.selectedAnswers = [...state.selectedAnswers, action.payload];
+    },
+    resetSelectedAnswers: (state) => {
+      state.selectedAnswers = [];
+    },
+    resetState: (state) => {
+      state.score = 0;
+      state.currentQuestionNum = 0;
+      state.isAnswered = false;
+      state.isCorrect = false;
     }
   }
 });
@@ -58,9 +69,11 @@ export const {
   updateHighScore,
   updateHighScoreDate,
   incrementCurrentQuestionNum,
-  resetCurrentQuestionNum,
   setIsCorrect,
-  setIsAnswered
+  setIsAnswered,
+  setSelectedAnswers,
+  resetSelectedAnswers,
+  resetState
 } = triviaSlice.actions;
 
 export default triviaSlice.reducer;

@@ -106,4 +106,4 @@ Send the URL for your saved fork to your Indeed recruiter.
 <!-- accessibilty? aria labels only on photo and tab order/enter? -->
 <!-- radio or button -->
 <!-- make component overridable? -->
-
+<!-- hanlde large strings -->

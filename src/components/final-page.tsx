@@ -1,23 +1,15 @@
-
-
+import React, { useEffect } from 'react';
 import Button from './button';
 import Text from './text';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../redux/store';
 import QUESTION_LIST from '../enums/questions-and-answers-enums';
-import {
-  resetCurrentQuestionNum,
-  resetScore,
-  setIsAnswered,
-  setIsCorrect,
-  updateHighScore,
-  updateHighScoreDate
-} from '../redux/triviaSlice';
-import React, { useEffect } from 'react';
+import { resetState, updateHighScore, updateHighScoreDate } from '../redux/triviaSlice';
+
 import getFormattedDate from '../helpers/getFormattedDate';
 import { DEFAULT_PATH } from '../enums/route-enums';
-import finalImg from '../img/book.png'
+import finalImg from '../img/book.png';
 import getFinalHeaderString from '../helpers/getFinalHeaderString';
 import { FINAL_SCORE, HIGH_SCORE, RESTART_BUTTON_TEXT } from '../enums/final-page-enums';
 
@@ -33,10 +25,7 @@ const FinalPage = () => {
   const questionCount = QUESTION_LIST.length;
 
   const handleReplayClick = () => {
-    dispatch(resetScore());
-    dispatch(resetCurrentQuestionNum());
-    dispatch(setIsAnswered(false));
-    dispatch(setIsCorrect(false));
+    dispatch(resetState());
     navigate(DEFAULT_PATH);
   };
 
@@ -50,15 +39,15 @@ const FinalPage = () => {
     }
   }, [score, highScore]);
 
-
   return (
-    <div className='final-page-wrapper'>
-        {/* todo dynamic messaging */}
-        <img src={finalImg} className='final-image' alt='brain on top of book'/>
-
-      <Text textString={getFinalHeaderString(score, questionCount)} styleName='final-header' />
-      <Text textString={FINAL_SCORE(score, questionCount)} styleName='final-score'/>
-      <Text textString={HIGH_SCORE(highScore, questionCount, highScoreDate) } styleName='final-score'/>
+    <div className="final-page-wrapper">
+      <img src={finalImg} className="final-image" alt="brain on top of book" />
+      <Text textString={getFinalHeaderString(score, questionCount)} styleName="final-header" />
+      <Text textString={FINAL_SCORE(score, questionCount)} styleName="final-score" />
+      <Text
+        textString={HIGH_SCORE(highScore, questionCount, highScoreDate)}
+        styleName="final-score"
+      />
       <Button buttonText={RESTART_BUTTON_TEXT} handleClick={handleReplayClick} isEnabled={true} />
     </div>
   );
