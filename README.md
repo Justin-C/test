@@ -99,3 +99,11 @@ Send the URL for your saved fork to your Indeed recruiter.
 <!-- add comments -->
 <!-- todo deselect a radio -->
 <!-- confirm button/radio disable behavior -->
+
+<!-- file structure of components and css? -->
+<!-- unified text component? -->
+<!-- how to add validation? -->
+<!-- accessibilty? aria labels only on photo and tab order/enter? -->
+<!-- radio or button -->
+<!-- make component overridable? -->
+

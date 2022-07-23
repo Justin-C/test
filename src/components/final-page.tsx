@@ -1,9 +1,5 @@
-import {
-  BEST_SCORE,
-  FINAL_HEADING,
-  FINAL_SCORE,
-  RESTART_BUTTON_TEXT
-} from '../enums/final-page-enums';
+
+
 import Button from './button';
 import Text from './text';
 import { useNavigate } from 'react-router-dom';
@@ -22,6 +18,8 @@ import React, { useEffect } from 'react';
 import getFormattedDate from '../helpers/getFormattedDate';
 import { DEFAULT_PATH } from '../enums/route-enums';
 import finalImg from '../img/book.png'
+import getFinalHeaderString from '../helpers/getFinalHeaderString';
+import { FINAL_SCORE, HIGH_SCORE, RESTART_BUTTON_TEXT } from '../enums/final-page-enums';
 
 // TODO docs
 const FinalPage = () => {
@@ -52,12 +50,15 @@ const FinalPage = () => {
     }
   }, [score, highScore]);
 
+
   return (
     <div className='final-page-wrapper'>
-      <Text textString={FINAL_HEADING} styleName='final-header' />
-      <img src={finalImg} className='final-image' alt='image of brain on top of book'/>
+        {/* todo dynamic messaging */}
+        <img src={finalImg} className='final-image' alt='brain on top of book'/>
+
+      <Text textString={getFinalHeaderString(score, questionCount)} styleName='final-header' />
       <Text textString={FINAL_SCORE(score, questionCount)} styleName='final-score'/>
-      <Text textString={BEST_SCORE(highScore, questionCount, highScoreDate) } styleName='final-score'/>
+      <Text textString={HIGH_SCORE(highScore, questionCount, highScoreDate) } styleName='final-score'/>
       <Button buttonText={RESTART_BUTTON_TEXT} handleClick={handleReplayClick} isEnabled={true} />
     </div>
   );

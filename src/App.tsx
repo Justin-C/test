@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import FinalPage from './components/final-page';
 import QuestionPage from './components/question-page';
 import { DEFAULT_PATH, FINAL_PATH } from './enums/route-enums';
