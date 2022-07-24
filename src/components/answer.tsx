@@ -15,6 +15,7 @@ const Answer = (props: AnswerProps) => {
         onChange={props.handleClick}
         value={props.answerText}
         disabled={props.isEnabled}
+        name="asdf"
       />
       <Text styleName="question__answer-text" textString={props.answerText} />
     </label>

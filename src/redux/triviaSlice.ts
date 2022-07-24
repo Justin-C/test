@@ -58,6 +58,7 @@ export const triviaSlice = createSlice({
       state.currentQuestionNum = 0;
       state.isAnswered = false;
       state.isCorrect = false;
+      state.selectedAnswers = [];
     }
   }
 });

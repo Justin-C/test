@@ -107,3 +107,4 @@ Send the URL for your saved fork to your Indeed recruiter.
 <!-- radio or button -->
 <!-- make component overridable? -->
 <!-- hanlde large strings -->
+<!-- radio as checkbox -->

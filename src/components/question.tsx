@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler, useEffect, useState } from 'react';
+import React, { ChangeEventHandler, Fragment, useEffect, useState } from 'react';
 import Text from './text';
 import '../styles/allstyles.scss';
 import QUESTION_LIST from '../enums/questions-and-answers-enums';
@@ -52,10 +52,10 @@ const Question = (props: QuestionProps) => {
   ));
 
   return (
-    <div>
+    <Fragment>
       <Text styleName="question__question-text" textString={props.questionObj.QUESTION_TEXT} />
       <div className="question__answer-container">{renderAnswers}</div>
-    </div>
+    </Fragment>
   );
 };
 

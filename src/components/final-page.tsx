@@ -46,7 +46,7 @@ const FinalPage = () => {
       <Text textString={FINAL_SCORE(score, questionCount)} styleName="final__score" />
       <Text
         textString={HIGH_SCORE(highScore, questionCount, highScoreDate)}
-        styleName="final__score"
+        styleName="final__highscore"
       />
       <Button buttonText={RESTART_BUTTON_TEXT} handleClick={handleReplayClick} isEnabled={true} />
     </div>

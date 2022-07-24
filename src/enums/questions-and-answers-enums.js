@@ -2,7 +2,12 @@
 const QUESTION_LIST = [
   {
     QUESTION_TEXT: 'is the sky blue',
-    QUESTION_OPTIONS: ['yes', 'no', 'a', 'b'],
+    QUESTION_OPTIONS: [
+      'yeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaas',
+      'no',
+      'a',
+      'b'
+    ],
     ANSWER_INDEX: [0]
   },
   {
