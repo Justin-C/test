@@ -3,62 +3,94 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import getFormattedDate from '../helpers/getFormattedDate';
 
 export interface triviaState {
-  score: number;
-  highScore: number;
-  highScoreDate: string;
-  currentQuestionNum: number;
-  isCorrect: boolean;
-  isAnswered: boolean;
-  selectedAnswers: string[];
+  scoreState: {
+    score: number;
+    highScore: number;
+    highScoreDate: string;
+  };
+  questionState: {
+    currentQuestionNum: number;
+    isCorrect: boolean;
+    isAnswered: boolean;
+    isSubmited: boolean;
+    selectedAnswers: number[];
+  };
 }
 const localStorageScore = window.localStorage.getItem('highScore') || '';
 const initialState: triviaState = {
-  score: 0,
-  highScore: parseInt(localStorageScore) || 0,
-  highScoreDate: window.localStorage.getItem('highScoreDate') || getFormattedDate(),
-  currentQuestionNum: 0,
-  isCorrect: false,
-  isAnswered: false,
-  selectedAnswers: []
+  scoreState: {
+    score: 0,
+    highScore: parseInt(localStorageScore) || 0,
+    highScoreDate: window.localStorage.getItem('highScoreDate') || getFormattedDate()
+  },
+  questionState: {
+    currentQuestionNum: 0,
+    isCorrect: false,
+    isAnswered: false,
+    isSubmited: false,
+    selectedAnswers: []
+  }
 };
 
 export const triviaSlice = createSlice({
   name: 'trivia',
   initialState,
   reducers: {
-    incrementScore: (state) => {
-      state.score += 1;
+    incrementScore: (state: triviaState) => {
+      state.scoreState.score += 1;
     },
-    resetScore: (state) => {
-      state.score = 0;
+    resetScore: (state: triviaState) => {
+      state.scoreState.score = 0;
     },
-    updateHighScore: (state, action: PayloadAction<number>) => {
-      state.highScore = action.payload;
+    updateHighScore: (state: triviaState, action: PayloadAction<number>) => {
+      state.scoreState.highScore = action.payload;
     },
-    updateHighScoreDate: (state, action: PayloadAction<string>) => {
-      state.highScoreDate = action.payload;
+    updateHighScoreDate: (state: triviaState, action: PayloadAction<string>) => {
+      state.scoreState.highScoreDate = action.payload;
     },
-    incrementCurrentQuestionNum: (state) => {
-      state.currentQuestionNum += 1;
+    incrementCurrentQuestionNum: (state: triviaState) => {
+      state.questionState.currentQuestionNum += 1;
     },
-    setIsCorrect: (state, action: PayloadAction<boolean>) => {
-      state.isCorrect = action.payload;
+    setIsCorrect: (state: triviaState, action: PayloadAction<boolean>) => {
+      state.questionState.isCorrect = action.payload;
     },
-    setIsAnswered: (state, action: PayloadAction<boolean>) => {
-      state.isAnswered = action.payload;
+    setIsAnswered: (state: triviaState, action: PayloadAction<boolean>) => {
+      state.questionState.isAnswered = action.payload;
     },
-    setSelectedAnswers: (state, action: PayloadAction<string>) => {
-      state.selectedAnswers = [...state.selectedAnswers, action.payload];
+    setIsSubmited: (state: triviaState, action: PayloadAction<boolean>) => {
+      state.questionState.isSubmited = action.payload;
     },
-    resetSelectedAnswers: (state) => {
-      state.selectedAnswers = [];
+    pushSelectedAnswers: (state: triviaState, action: PayloadAction<number>) => {
+      state.questionState.selectedAnswers = [
+        ...state.questionState.selectedAnswers,
+        action.payload
+      ];
     },
-    resetState: (state) => {
-      state.score = 0;
-      state.currentQuestionNum = 0;
-      state.isAnswered = false;
-      state.isCorrect = false;
-      state.selectedAnswers = [];
+    removeSelectedAnswers: (state: triviaState, action: PayloadAction<number>) => {
+      state.questionState.selectedAnswers = state.questionState.selectedAnswers.filter(
+        (ans) => ans !== action.payload
+      );
+    },
+    setSelectedAnswer: (state: triviaState, action: PayloadAction<number>) => {
+      state.questionState.selectedAnswers = [action.payload];
+    },
+    resetSelectedAnswers: (state: triviaState) => {
+      state.questionState.selectedAnswers = [];
+    },
+    resetState: (state: triviaState) => {
+      state.scoreState.score = 0;
+      state.questionState.currentQuestionNum = 0;
+      state.questionState.isAnswered = false;
+      state.questionState.isCorrect = false;
+      state.questionState.selectedAnswers = [];
+      state.questionState.isSubmited = false;
+    },
+    resetQuestionState: (state: triviaState) => {
+      state.questionState.isAnswered = false;
+      state.questionState.isCorrect = false;
+      state.questionState.isSubmited = false;
+      state.questionState.selectedAnswers = [];
+      state.questionState.currentQuestionNum += 1;
     }
   }
 });
@@ -72,8 +104,12 @@ export const {
   incrementCurrentQuestionNum,
   setIsCorrect,
   setIsAnswered,
-  setSelectedAnswers,
+  setIsSubmited,
+  pushSelectedAnswers,
+  setSelectedAnswer,
   resetSelectedAnswers,
+  resetQuestionState,
+  removeSelectedAnswers,
   resetState
 } = triviaSlice.actions;
 

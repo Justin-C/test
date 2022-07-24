@@ -2,23 +2,21 @@
 const QUESTION_LIST = [
   {
     QUESTION_TEXT: 'is the sky blue',
-    QUESTION_OPTIONS: [
-      'yeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaas',
-      'no',
-      'a',
-      'b'
-    ],
-    ANSWER_INDEX: [0]
+    QUESTION_OPTIONS: ['yeaaaa', 'no', 'a', 'b'],
+    ANSWER_INDEX: [0],
+    IS_MULTI: false
   },
   {
-    QUESTION_TEXT: 'is the sky red',
+    QUESTION_TEXT: 'is the sky blue',
     QUESTION_OPTIONS: ['aaaa', 'bbb', 'ccc', 'ddd', 'eee', 'fff'],
-    ANSWER_INDEX: [3]
+    ANSWER_INDEX: [3],
+    IS_MULTI: false
   },
   {
     QUESTION_TEXT: 'Which is cat',
     QUESTION_OPTIONS: ['dog', 'lion', 'puma'],
-    ANSWER_INDEX: [1, 2]
+    ANSWER_INDEX: [1, 2],
+    IS_MULTI: true
   }
 ];
 

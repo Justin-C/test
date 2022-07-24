@@ -15,9 +15,9 @@ import { FINAL_SCORE, HIGH_SCORE, RESTART_BUTTON_TEXT } from '../enums/final-pag
 
 // TODO docs
 const FinalPage = () => {
-  const score = useSelector((state: RootState) => state.trivia.score);
-  const highScore = useSelector((state: RootState) => state.trivia.highScore);
-  const highScoreDate = useSelector((state: RootState) => state.trivia.highScoreDate);
+  const score = useSelector((state: RootState) => state.trivia.scoreState.score);
+  const highScore = useSelector((state: RootState) => state.trivia.scoreState.highScore);
+  const highScoreDate = useSelector((state: RootState) => state.trivia.scoreState.highScoreDate);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();

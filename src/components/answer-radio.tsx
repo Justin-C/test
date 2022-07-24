@@ -2,12 +2,12 @@ import React, { ChangeEventHandler } from 'react';
 import Text from './text';
 import '../styles/allstyles.scss';
 
-interface AnswerProps {
+interface AnswerRadioProps {
   answerText: string;
   handleClick: ChangeEventHandler;
   isEnabled: boolean;
 }
-const Answer = (props: AnswerProps) => {
+const AnswerRadio = (props: AnswerRadioProps) => {
   return (
     <label>
       <input
@@ -15,11 +15,11 @@ const Answer = (props: AnswerProps) => {
         onChange={props.handleClick}
         value={props.answerText}
         disabled={props.isEnabled}
-        name="asdf"
+        name="radio"
       />
       <Text styleName="question__answer-text" textString={props.answerText} />
     </label>
   );
 };
 
-export default Answer;
+export default AnswerRadio;
