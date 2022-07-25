@@ -1,21 +1,15 @@
-import React, { ChangeEvent, Fragment } from 'react';
+import React, { ChangeEvent, Fragment, useState } from 'react';
 import Text from './text';
 import '../styles/allstyles.scss';
 import QUESTION_LIST from '../enums/questions-and-answers-enums';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../redux/store';
 import {
-  // incrementCurrentQuestionNum,
   incrementScore,
-  pushSelectedAnswers,
-  removeSelectedAnswers,
   resetQuestionState,
-  // pushSelectedAnswers,
-  // resetSelectedAnswers,
   setIsAnswered,
   setIsCorrect,
   setIsSubmited,
-  setSelectedAnswer
 } from '../redux/triviaSlice';
 import Button from './button';
 import { useNavigate } from 'react-router-dom';
@@ -44,11 +38,10 @@ const Question = (props: QuestionProps) => {
     (state: RootState) => state.trivia.questionState.currentQuestionNum
   );
   const isAnswered = useSelector((state: RootState) => state.trivia.questionState.isAnswered);
-  const selectedAnswers = useSelector(
-    (state: RootState) => state.trivia.questionState.selectedAnswers
-  );
   const isSubmited = useSelector((state: RootState) => state.trivia.questionState.isSubmited);
   const isCorrect = useSelector((state: RootState) => state.trivia.questionState.isCorrect);
+
+  const [selectedAnswers, setSelectedAnswers] = useState<number[]>([])
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -57,12 +50,8 @@ const Question = (props: QuestionProps) => {
 
   const increaseQuestion = () => {
     if (currentQuestionNum < questionCount - 1) {
-      // dispatch(setIsCorrect(false));
-      // dispatch(setIsAnswered(false));
-      // dispatch(incrementCurrentQuestionNum());
-      // dispatch(resetSelectedAnswers());
-      // dispatch(setIsSubmited(false));
       dispatch(resetQuestionState());
+      setSelectedAnswers([]);
     } else {
       navigate(FINAL_PATH);
     }
@@ -114,7 +103,7 @@ const Question = (props: QuestionProps) => {
 
   const handleSelectRadio = (index: number) => {
     dispatch(setIsAnswered(true));
-    dispatch(setSelectedAnswer(index));
+    setSelectedAnswers([index])
   };
 
   const handleSelectCheckbox = (e: ChangeEvent<Element>, index: number) => {
@@ -122,12 +111,13 @@ const Question = (props: QuestionProps) => {
       if (selectedAnswers.length + 1 === props.questionObj.ANSWER_INDEX.length) {
         dispatch(setIsAnswered(true));
       }
-      dispatch(pushSelectedAnswers(index));
+      setSelectedAnswers(arr => [...arr, index])
     } else {
       if (selectedAnswers.length === props.questionObj.ANSWER_INDEX.length) {
         dispatch(setIsAnswered(false));
       }
-      dispatch(removeSelectedAnswers(index));
+      setSelectedAnswers(arr => arr.filter((ind) => ind !== index))
+
     }
   };
 

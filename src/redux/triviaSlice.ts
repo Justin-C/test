@@ -13,7 +13,6 @@ export interface triviaState {
     isCorrect: boolean;
     isAnswered: boolean;
     isSubmited: boolean;
-    selectedAnswers: number[];
   };
 }
 const localStorageScore = window.localStorage.getItem('highScore') || '';
@@ -28,7 +27,6 @@ const initialState: triviaState = {
     isCorrect: false,
     isAnswered: false,
     isSubmited: false,
-    selectedAnswers: []
   }
 };
 
@@ -60,36 +58,17 @@ export const triviaSlice = createSlice({
     setIsSubmited: (state: triviaState, action: PayloadAction<boolean>) => {
       state.questionState.isSubmited = action.payload;
     },
-    pushSelectedAnswers: (state: triviaState, action: PayloadAction<number>) => {
-      state.questionState.selectedAnswers = [
-        ...state.questionState.selectedAnswers,
-        action.payload
-      ];
-    },
-    removeSelectedAnswers: (state: triviaState, action: PayloadAction<number>) => {
-      state.questionState.selectedAnswers = state.questionState.selectedAnswers.filter(
-        (ans) => ans !== action.payload
-      );
-    },
-    setSelectedAnswer: (state: triviaState, action: PayloadAction<number>) => {
-      state.questionState.selectedAnswers = [action.payload];
-    },
-    resetSelectedAnswers: (state: triviaState) => {
-      state.questionState.selectedAnswers = [];
-    },
     resetState: (state: triviaState) => {
       state.scoreState.score = 0;
       state.questionState.currentQuestionNum = 0;
       state.questionState.isAnswered = false;
       state.questionState.isCorrect = false;
-      state.questionState.selectedAnswers = [];
       state.questionState.isSubmited = false;
     },
     resetQuestionState: (state: triviaState) => {
       state.questionState.isAnswered = false;
       state.questionState.isCorrect = false;
       state.questionState.isSubmited = false;
-      state.questionState.selectedAnswers = [];
       state.questionState.currentQuestionNum += 1;
     }
   }
@@ -105,11 +84,7 @@ export const {
   setIsCorrect,
   setIsAnswered,
   setIsSubmited,
-  pushSelectedAnswers,
-  setSelectedAnswer,
-  resetSelectedAnswers,
   resetQuestionState,
-  removeSelectedAnswers,
   resetState
 } = triviaSlice.actions;
 
