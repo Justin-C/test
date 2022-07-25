@@ -4,15 +4,15 @@ import getFormattedDate from '../helpers/getFormattedDate';
 
 export interface triviaState {
   scoreState: {
-    score: number;
-    highScore: number;
-    highScoreDate: string;
+    score: number; // user score
+    highScore: number; // user high score
+    highScoreDate: string; // user high score date
   };
   questionState: {
-    currentQuestionNum: number;
-    isCorrect: boolean;
-    isAnswered: boolean;
-    isSubmited: boolean;
+    currentQuestionNum: number; // number question user is on
+    isCorrect: boolean; // is answer correct
+    isAnswered: boolean; // has user selected an answer
+    isSubmited: boolean; // has user clicked submit button
   };
 }
 const localStorageScore = window.localStorage.getItem('highScore') || '';

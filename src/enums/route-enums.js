@@ -1,4 +1,4 @@
-// Question Page
+// Question Page route
 export const DEFAULT_PATH = '/';
-// Final Page
+// Final Page route
 export const FINAL_PATH = '/final';

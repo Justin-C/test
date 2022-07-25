@@ -1,3 +1,4 @@
+// Strings for final page content
 export const FINAL_HEADING_HIGH = "You're a Trivia master!";
 export const FINAL_HEADING_MIDDLE = 'Well Done!';
 export const FINAL_HEADING_LOW = 'Better Luck Next Time!';

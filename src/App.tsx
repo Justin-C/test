@@ -6,8 +6,6 @@ import QuestionPage from './components/question-page';
 import { DEFAULT_PATH, FINAL_PATH } from './enums/route-enums';
 
 export default function App() {
-  // const location = useLocation()
-
   return (
     <Fragment>
       <Router>
