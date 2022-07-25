@@ -5,7 +5,12 @@ import QUESTION_LIST from '../enums/questions-and-answers-enums';
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/store';
 import Question from './question';
+import '../styles/styles.scss';
 
+/**
+ * This is the Question Page.  It will render the question count, score,
+ * and each question.
+ */
 const QuestionPage = () => {
   const score = useSelector((state: RootState) => state.trivia.scoreState.score);
   const currentQuestionNum = useSelector(

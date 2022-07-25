@@ -26,7 +26,7 @@ const initialState: triviaState = {
     currentQuestionNum: 0,
     isCorrect: false,
     isAnswered: false,
-    isSubmited: false,
+    isSubmited: false
   }
 };
 

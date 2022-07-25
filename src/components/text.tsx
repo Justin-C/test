@@ -1,10 +1,15 @@
 import React from 'react';
-import '../styles/allstyles.scss';
+import '../styles/styles.scss';
 
 interface TextProps {
-  textString: string;
-  styleName?: string;
+  textString: string; // text string
+  styleName?: string; // css classnames to append
 }
+
+/**
+ * Text Component to display text
+ * @param props see TextProps
+ */
 const Text = (props: TextProps) => {
   return <p className={`${props.styleName} text--default`}>{props.textString}</p>;
 };
