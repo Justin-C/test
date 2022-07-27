@@ -9,7 +9,7 @@ export default function App() {
   return (
     <Fragment>
       <Router>
-        <Routes location={location}>
+        <Routes>
           <Route path={DEFAULT_PATH} element={<QuestionPage />} />
           <Route path={FINAL_PATH} element={<FinalPage />} />
         </Routes>
