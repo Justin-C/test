@@ -25,7 +25,7 @@ const QuestionPage = () => {
         styleName="question__counter"
         textString={QUESTION_COUNT(currentQuestionNum + 1, questionCount)}
       />
-      <Text styleName="question__score" textString={SCORE_COUNT(score.toString())} />
+      <Text styleName="question__score" textString={SCORE_COUNT(score)} />
       <Question questionObj={QUESTION_LIST[currentQuestionNum]} />
     </div>
   );

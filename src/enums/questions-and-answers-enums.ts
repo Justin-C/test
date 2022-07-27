@@ -10,14 +10,14 @@
 const QUESTION_LIST = [
   {
     QUESTION_TEXT:
-      'If you have 10 mangos and another person gives you 12 more, how‌ ‌many‌ ‌mangos‌ ‌will‌ ‌you‌ ‌have‌ ‌in‌ ‌total?‌',
+      'If you have 10 mangos and another person gives you 12 more, how many mangos will you have in total?',
     QUESTION_OPTIONS: ['1 mango', '2 mangos', '10 mangos', '22 mangos'],
     ANSWER_INDEX: [3],
     IS_MULTI: false
   },
   {
     QUESTION_TEXT:
-      'If‌ ‌a‌ ‌train‌ ‌is‌ ‌supposed‌ ‌to‌ ‌reach‌ ‌the‌ ‌station‌ ‌at‌ ‌4:10‌ ‌am‌. but‌ ‌it‌ ‌is ‌35‌ ‌minutes‌ late,‌ ‌at‌ ‌what‌ ‌time‌ ‌will ‌the‌ ‌train‌ ‌reach‌ ‌the‌ ‌station?‌',
+      'If a train is supposed to reach the station at 4:10 am, but it is 35 minuates late, at what time will the train reach the station?',
     QUESTION_OPTIONS: ['4:45 am', '3:00 am', '4:45 pm', '6:00 pm'],
     ANSWER_INDEX: [0],
     IS_MULTI: false

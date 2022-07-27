@@ -2,7 +2,7 @@ import {
   FINAL_HEADING_HIGH,
   FINAL_HEADING_LOW,
   FINAL_HEADING_MIDDLE
-} from '../enums/final-page-enums.js';
+} from '../enums/final-page-enums';
 
 /**
  * Return dynamic final header content based on user score

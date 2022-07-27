@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`button component test should render button 1`] = `
+<button
+  className="undefined button"
+  disabled={false}
+  onClick={[Function]}
+>
+  test
+</button>
+`;

@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`checkbox tests should render checkbox 1`] = `
+<label>
+  <input
+    checked={true}
+    disabled={true}
+    name="radio"
+    onChange={[Function]}
+    type="radio"
+    value="test"
+  />
+  <p
+    className="question__answer-text text--default"
+  >
+    test
+  </p>
+</label>
+`;
