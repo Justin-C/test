@@ -1,0 +1,148 @@
+$colorDefault: #2d2d2d;
+$colorCorrect: #065927;
+$colorIncorrect: #b02a2a;
+$colorRadioBorder: #c0c0c0;
+$colorRadioInner: #ffffff;
+$colorButton: #065fb1;
+$colorButtonText: #ffffff;
+
+.text--default {
+  font-family: 'Roboto';
+  margin: 0;
+}
+
+.question__feedback {
+  margin-top: 25px;
+  font-weight: 700;
+  font-size: 16px;
+  animation: fadeIn 1s;
+}
+
+.question__counter {
+  font-weight: 700;
+  font-size: 20px;
+  color: $colorDefault;
+  margin-bottom: 16px;
+}
+
+.question__score {
+  font-weight: 700;
+  font-size: 20px;
+  color: $colorDefault;
+}
+
+.question__question-text {
+  font-weight: 400;
+  font-size: 16px;
+  color: $colorDefault;
+  margin-bottom: 16px;
+}
+
+.question__answer-text {
+  font-weight: 400;
+  font-size: 16px;
+  display: inline-block;
+  color: $colorDefault;
+}
+
+.question__feedback--correct {
+  color: $colorCorrect;
+}
+
+.question__feedback--incorrect {
+  color: $colorIncorrect;
+}
+
+.question__answer-container {
+  display: grid;
+  justify-content: start;
+  align-items: center;
+  justify-items: start;
+  grid-template-columns: repeat(1, 1fr);
+  row-gap: 16px;
+  grid-template-rows: auto;
+}
+
+.question__page-wrapper {
+  margin-left: 48px;
+  margin-top: 56px;
+}
+
+.final__header {
+  font-weight: 700;
+  font-size: 36px;
+  color: $colorDefault;
+  margin-bottom: 18px;
+}
+
+.final__score {
+  font-weight: 400;
+  font-size: 20px;
+  color: $colorDefault;
+  margin-bottom: 16px;
+}
+
+.final__highscore {
+  font-weight: 400;
+  font-size: 20px;
+  color: $colorDefault;
+}
+
+.final__page-wrapper {
+  text-align: center;
+}
+
+.final__image {
+  width: 30%;
+  max-width: 10rem;
+  min-width: 5rem;
+  height: auto;
+  margin-top: 48px;
+  margin-bottom: 24px;
+}
+
+.button {
+  font-weight: 700;
+  font-size: 16px;
+  background: $colorButton;
+  border-radius: 8px;
+  color: $colorButtonText;
+  border: 0px;
+  width: 145px;
+  height: 44px;
+  text-align: center;
+  margin-top: 24px;
+}
+
+button:active {
+  background: #3173ac;
+  box-shadow: rgb(0 0 0 / 20%) 0px 5px 5px -3px, rgb(0 0 0 / 14%) 0px 8px 10px 1px,
+    rgb(0 0 0 / 12%) 0px 3px 14px 2px;
+}
+
+button:disabled {
+  color: rgba(0, 0, 0, 0.26);
+  box-shadow: none;
+  background-color: rgba(0, 0, 0, 0.12);
+}
+
+@media (min-width: 600px) {
+  .question__answer-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .question__score {
+    position: absolute;
+    margin: 0px;
+    right: 48px;
+    top: 48px;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

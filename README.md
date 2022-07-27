@@ -82,3 +82,31 @@ Open the CodeSandbox template and save to create your own unique fork.
 ## How to submit your game
 
 Send the URL for your saved fork to your Indeed recruiter.
+
+<!-- can i use prettier, jest, cypress, eslint? -->
+<!-- are questions and answers text only? -->
+<!-- how should page nav work, pressing back goes to separage page? -->
+<!-- file structure of components and css? -->
+<!-- enums as jsx files? -->
+<!-- unified text component? -->
+<!-- how to add validation? -->
+<!-- todo lock buttons, inccorrect message -->
+<!-- todo add questions -->
+<!-- todo rename variables -->
+<!-- accessibilty? aria labels only on photo and tab order/enter? -->
+<!-- radio or button -->
+<!-- make component overridable? -->
+<!-- add comments -->
+<!-- todo deselect a radio -->
+<!-- confirm button/radio disable behavior -->
+
+<!-- file structure of components and css? -->
+<!-- unified text component? -->
+<!-- how to add validation? -->
+<!-- accessibilty? aria labels only on photo and tab order/enter? -->
+<!-- radio or button -->
+<!-- make component overridable? -->
+<!-- hanlde large strings -->
+<!-- radio as checkbox -->
+
+<!-- todo checkbox undisable on first? -->
